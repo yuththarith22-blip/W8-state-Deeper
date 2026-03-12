@@ -23,7 +23,7 @@ const ORDERS = [
 
 export default function App() {
   const [orders, setOrders] = React.useState(ORDERS);
-
+  
   return (
     <>
       <header>
@@ -31,7 +31,9 @@ export default function App() {
       </header>
 
       <div className="order-list">
-        <OrderCard></OrderCard>
+        {orders.map((order, index) => (
+          <OrderCard key={index} product={order.product} price={order.price} quantity={order.quantity} />
+        ))}
       </div>
 
       <CheckoutButton total="TODO"></CheckoutButton>
